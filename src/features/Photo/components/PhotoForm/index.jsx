@@ -10,11 +10,7 @@ import * as Yup from 'yup';
 PhotoForm.propTypes = {};
 
 function PhotoForm(props) {
-  const initialValues = {
-    title: '',
-    categoryId: null,
-    photo: '',
-  };
+  const { initialValues, isAddMod } = props;
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('This field is required'),
@@ -64,9 +60,9 @@ function PhotoForm(props) {
             />
 
             <FormGroup>
-              <Button type="submit" color="primary">
+              <Button type="submit" color={isAddMod ? 'primary' : 'success'}>
                 {isSubmitting && <Spinner size="sm" color="light" />}
-                Add to album
+                {isAddMod ? 'Add' : 'Update'}
               </Button>
             </FormGroup>
           </Form>
