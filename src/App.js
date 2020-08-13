@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
-import { Button } from 'reactstrap';
+import { Button, Spinner } from 'reactstrap';
 import Header from 'components/Header';
 import NotFound from 'components/NotFound';
 
@@ -11,7 +11,7 @@ const Photo = React.lazy(() => import('./features/Photo'));
 function App() {
   return (
     <div className="photo-app">
-      <Suspense fallback={<div>Loading ...</div>}>
+      <Suspense fallback={<Spinner type="grow" color="danger" />}>
         <BrowserRouter>
           <Header />
 
